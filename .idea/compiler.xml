@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="helloworld" />
+        <module name="calculatorapp" />
         <module name="VariableApp (2) (com.pluralsight)" />
       </profile>
     </annotationProcessing>
