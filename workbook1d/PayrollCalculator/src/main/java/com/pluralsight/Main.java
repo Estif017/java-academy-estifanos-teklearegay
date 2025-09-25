@@ -15,4 +15,5 @@ public class Main {
         float gross_pay = (hours*pay_rate)*52;
         System.out.println("And your annual gross pay is "+gross_pay);
     }
+
 }
