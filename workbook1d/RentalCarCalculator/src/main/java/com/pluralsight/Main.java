@@ -33,7 +33,7 @@ public class Main {
 
         double basicRentalRate = age < 25 ? (29.99*0.3) + 29.99 : 29.99;
         double totalRenalRate = Math.round((basicRentalRate*days)+totalTollTag+totalGpsRate);
-        System.out.println("Based on the information we gathered the total due amount for this car to rent for "+days+ " days would be $"+totalRenalRate);
+        System.out.println("Based on the information we gathered\nPickup date: "+pickupDate+ "\nRenting for "+days+" days\nTotal Amount Due:"+totalRenalRate);
 
         scanner.close();
     }
