@@ -16,6 +16,13 @@ public class Main {
         int size = scanner.nextInt();
         double price = size == 1 ? 5.45 : 8.95;
 
+        double loadedPrice = size == 1 ? 1.00 : 1.75;
+        System.out.println("Would you like the sandwich to be loaded for "+ loadedPrice+"? (Enter true or false)");
+        boolean loaded = scanner.nextBoolean();
+        if(loaded){
+            price = price + loadedPrice;
+        }
+
         System.out.println("Please enter your age to see if you are eligable for promotion: ");
         int age = scanner.nextInt();
         double discount = 0;
@@ -26,7 +33,7 @@ public class Main {
         }else{
             System.out.println("You are not eligable for discount");
         }
-        double totalPrice = price - discount;
+        double totalPrice = Math.round(price - discount);
         System.out.println("Your total will be "+ totalPrice);
         scanner.close();
     }
