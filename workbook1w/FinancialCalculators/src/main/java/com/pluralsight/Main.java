@@ -21,7 +21,7 @@ public class Main {
         if(choice==1){
             mortgageCalculator(scanner);
         } else if (choice==2) {
-            compoundInterestCalculator();
+            compoundInterestCalculator(scanner);
         }else{
             System.out.println("Invalid input!");
         }
@@ -39,8 +39,21 @@ public class Main {
         System.out.println("For $"+principal+" principal amount with "+interestRate*100+"% interest rate for "+loanLength/12+" years the monthly payment would be: $"+monthlyPayment);
         System.out.println("The total interest would be $"+totalInterest);
     }
-    public static void compoundInterestCalculator(){
-        System.out.println("Compaund interest calculator");
+    public static void compoundInterestCalculator(Scanner scanner){
+        System.out.println("How much did you deposited");
+        double depositAmount = scanner.nextDouble();
+        System.out.println("How much is the interest ");
+        double interestRate = scanner.nextDouble()/100;
+        System.out.println("for how many years will be deposited");
+        int time = scanner.nextInt();
+        double futureValue = depositAmount*Math.pow(1+(interestRate/365),(365*time));
+        double interestEarned = futureValue-depositAmount;
+        System.out.println("Deposit Amount: $" + depositAmount);
+        System.out.println("Annual Interest Rate: " + (interestRate * 100) + "%");
+        System.out.println("Time Deposited: " + time + " years");
+        System.out.printf("Future Value: $%.2f\n", futureValue);
+        System.out.printf("Interest Earned: $%.2f\n", interestEarned);
+
     }
 
 }
