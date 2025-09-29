@@ -7,13 +7,14 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="helloworld" />
-        <module name="calculatorapp" />
         <module name="VariableApp (2) (com.pluralsight)" />
+        <module name="calculatorapp" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="VariableApp" target="17" />
       <module name="VariableApp (2) (com.pluralsight)" target="17" />
+      <module name="workbook2a" target="17" />
     </bytecodeTargetLevel>
   </component>
 </project>

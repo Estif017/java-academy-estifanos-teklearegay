@@ -7,6 +7,7 @@ public class GradeChecker {
     public static void main(String[] args) {
         char grade = gradeChaker(scanner);
         System.out.println("Your grade is "+grade);
+        scanner.close();
     }
 
     public static char gradeChaker(Scanner scanner){
@@ -21,6 +22,8 @@ public class GradeChecker {
             grade = 'C';
         }else if(score>60&&score<69){
             grade = 'D';
+        }else{
+            grade = 'F';
         }
         return grade;
     }
