@@ -9,6 +9,7 @@
         <module name="helloworld" />
         <module name="VariableApp (2) (com.pluralsight)" />
         <module name="calculatorapp" />
+        <module name="WK2StringsAndArrays" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
