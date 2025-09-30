@@ -19,19 +19,17 @@ public class Main {
                 System.out.println("Iteration " + i);
             }
         }
-        String input;
-        do {
-            System.out.println("Type \"Exit\" to terminate the code ");
-            input = scanner.nextLine();
-            if (!input.equals("Exit")) {
-                System.out.println("Seriously type Exit");
-                System.out.println("The code runs forever unless you type \"Exit\"");
-            }
-        } while (!input.equals("Exit"));
+        System.out.println("type Exit");
 
-        System.out.println("Program terminated.");
-        scanner.close();
-    }
+        String input= scanner.nextLine();
+
+        do{
+            System.out.println("Type \"Exit\" to terminate the code ");
+        }while(!input.equals("Exit"));{
+            System.out.println("Seriously type Exit");
+            input = scanner.nextLine();
+            System.out.println("The code run forever unless you type \"Exit\"");
+        }
         int j = 60;
         while (j > 0) {
             System.out.println("Countdown: " + j);
