@@ -13,6 +13,9 @@ public class CellPhone {
         this.phoneNumber = phoneNumber;
         this.owner = owner;
     }
+    public CellPhone(){
+
+    }
     public double getSerialNumber(){
         return serialNumber;
     }
