@@ -9,10 +9,13 @@
         <module name="helloworld" />
         <module name="RollTheDice" />
         <module name="TestStatistics" />
+        <module name="PalindromeProduct" />
+        <module name="VehicleInventory" />
         <module name="WK2StringsAndArrays" />
         <module name="LoopingExercisie" />
         <module name="VariableApp (2) (com.pluralsight)" />
         <module name="calculatorapp" />
+        <module name="PowerPuffGirls" />
         <module name="CellPhoneService" />
       </profile>
     </annotationProcessing>
