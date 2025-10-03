@@ -17,6 +17,7 @@
         <module name="calculatorapp" />
         <module name="PowerPuffGirls" />
         <module name="CellPhoneService" />
+        <module name="neighborhoodlibrary" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
