@@ -24,10 +24,6 @@ public class Employee {
         return employeeId;
     }
 
-    public void setEmployeeId(int employeeId) {
-        this.employeeId = employeeId;
-    }
-
     public double getGrossPay(){
         return this.hoursWorked*this.payRate;
     }
