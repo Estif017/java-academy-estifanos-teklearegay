@@ -1,0 +1,8 @@
+2025-10-07 14:23:39 - Launching the application
+2025-10-07 14:24:10 - Searching for term: "log.txt"
+2025-10-07 14:24:41 - Exiting the application
+2025-10-07 14:26:29 - Launching the application
+2025-10-07 14:26:36 - Searching for term: "Java"
+2025-10-07 14:26:39 - Searching for term: "sql"
+2025-10-07 14:26:46 - Searching for term: "springboot"
+2025-10-07 14:26:50 - Exiting the application
