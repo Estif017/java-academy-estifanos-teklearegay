@@ -18,4 +18,13 @@ public class Product {
     public float getPrice() {
         return this.price;
     }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                '}';
+    }
 }
