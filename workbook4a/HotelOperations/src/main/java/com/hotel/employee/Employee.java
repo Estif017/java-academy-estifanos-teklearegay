@@ -1,5 +1,7 @@
 package com.hotel.employee;
 
+import java.time.LocalTime;
+
 public class Employee {
     private String employeeId;
     private String name;
@@ -29,9 +31,27 @@ public class Employee {
         return this.hoursWorked>40 ? this.hoursWorked - 40 : 0;
     }
 
-    public void punchTimeCard(double timeIn, double timeOut){
-        double timeWorked = timeOut-timeIn;
-        this.setHoursWorked(this.getHoursWorked()+timeWorked);
+//    public void punchTimeCard(double timeIn, double timeOut){
+//        double timeWorked = timeOut-timeIn;
+//        this.setHoursWorked(this.getHoursWorked()+timeWorked);
+//    }
+
+    public double punchIn(double time){
+        return time;
+    }
+
+    public void punchOut(double time){
+        this.setHoursWorked(this.getHoursWorked()+(time-this.punchIn(time)));
+    }
+
+    public LocalTime punchIn(){
+        return LocalTime.now();
+    }
+
+    public void punchOut(){
+        double punchintieme = Double.parseDouble(String.valueOf(this.punchIn()));
+        double punchoutTIme = Double.parseDouble(String.valueOf(LocalTime.now()));
+        this.setHoursWorked((this.getHoursWorked()+Double.parseDouble(String.valueOf(punchoutTIme-punchintieme))));
     }
 
     public String getEmployeeId() {
