@@ -83,4 +83,6 @@ public class Hotel {
     public void setBookedBasicRooms(int bookedBasicRooms) {
         this.bookedBasicRooms = bookedBasicRooms;
     }
+
+
 }

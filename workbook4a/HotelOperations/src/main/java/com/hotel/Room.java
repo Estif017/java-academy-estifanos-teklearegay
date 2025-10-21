@@ -11,8 +11,10 @@ public class Room {
     }
 
     public void checkIn(){
-        this.setOccupied(true);
-        this.setDirty(true);
+        if(isAvailable()){
+            this.setOccupied(true);
+            this.setDirty(false);
+        }
     }
 
     public void checkOut(){
@@ -21,7 +23,9 @@ public class Room {
     }
 
     public void cleanroom(){
-        this.setDirty(false);
+        if(!this.isOccupied()){
+            this.setDirty(false);
+        }
     }
 
 

@@ -31,10 +31,10 @@ public class Employee {
         return this.hoursWorked>40 ? this.hoursWorked - 40 : 0;
     }
 
-//    public void punchTimeCard(double timeIn, double timeOut){
-//        double timeWorked = timeOut-timeIn;
-//        this.setHoursWorked(this.getHoursWorked()+timeWorked);
-//    }
+    public void punchTimeCard(double timeIn, double timeOut){
+        double timeWorked = timeOut-timeIn;
+        this.setHoursWorked(this.getHoursWorked()+timeWorked);
+    }
 
     public double punchIn(double time){
         return time;
@@ -93,4 +93,6 @@ public class Employee {
     public void setHoursWorked(double hoursWorked) {
         this.hoursWorked = hoursWorked;
     }
+
+
 }
