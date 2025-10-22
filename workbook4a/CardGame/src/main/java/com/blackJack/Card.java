@@ -13,6 +13,10 @@ public class Card {
         return this.value;
     }
 
+    public String getSuit() {
+        return suit;
+    }
+
     public int getPointValue(){
         switch (this.value){
             case "A": return 11;
@@ -21,5 +25,9 @@ public class Card {
             case "J": return 10;
             default: return Integer.parseInt(this.value);
         }
+    }
+    @Override
+    public String toString() {
+        return value + " of " + suit;
     }
 }
