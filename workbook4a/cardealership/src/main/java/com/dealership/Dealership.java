@@ -3,7 +3,6 @@ package com.dealership;
 import com.vehicle.Vehicle;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Dealership {
     private String name;
@@ -17,6 +16,7 @@ public class Dealership {
         this.phone = phone;
         this.inventory = new ArrayList<Vehicle>();
     }
+
 
     public ArrayList<Vehicle> getVehiclesByPrice(double min,double max){
         ArrayList<Vehicle> vehicles = new ArrayList<>();
@@ -49,17 +49,20 @@ public class Dealership {
     }
 
     public ArrayList<Vehicle> getAllVehicles(){
-        ArrayList<Vehicle> vehicles = new ArrayList<>();
-        return vehicles;
+        return this.inventory;
     }
 
     public void addVehicle(Vehicle vehicle){
-        ArrayList<Vehicle> vehicles = new ArrayList<>();
-        vehicles.add(vehicle);
+        this.inventory.add(vehicle);
     }
 
     public void removeVehicle(Vehicle vehicle){
         ArrayList<Vehicle> vehicles = new ArrayList<>();
         vehicles.remove(vehicle);
     }
+
+    public ArrayList<Vehicle> getInventory() {
+        return inventory;
+    }
+
 }
