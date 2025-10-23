@@ -3,6 +3,7 @@ package com.dealership;
 import com.vehicle.Vehicle;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Dealership {
     private String name;
@@ -18,34 +19,64 @@ public class Dealership {
     }
 
 
-    public ArrayList<Vehicle> getVehiclesByPrice(double min,double max){
-        ArrayList<Vehicle> vehicles = new ArrayList<>();
-        return vehicles;
+    public ArrayList<Vehicle> getVehiclesByPrice(double min, double max){
+        ArrayList<Vehicle> sortedVehicles = new ArrayList<>();
+        for(Vehicle vehicle : this.inventory){
+            if(vehicle.getPrice()>min && vehicle.getPrice()<max){
+                sortedVehicles.add(vehicle);
+            }
+        }
+        return sortedVehicles;
     }
 
     public ArrayList<Vehicle> getVehiclesByMakeModel(String make, String model){
-        ArrayList<Vehicle> vehicles = new ArrayList<>();
-        return vehicles;
+        ArrayList<Vehicle> searchedVehicles = new ArrayList<>();
+        for(Vehicle vehicle : this.inventory){
+            if(vehicle.getMake().equalsIgnoreCase(make)&& vehicle.getModel().equalsIgnoreCase(model)){
+                searchedVehicles.add(vehicle);
+            }
+        }
+        return searchedVehicles;
     }
 
     public ArrayList<Vehicle> getVehiclesByYear(int min,int max){
-        ArrayList<Vehicle> vehicles = new ArrayList<>();
-        return vehicles;
+        ArrayList<Vehicle> yearSortedVehicles = new ArrayList<>();
+        for(Vehicle vehicle: this.inventory){
+            if(vehicle.getYear()>min&&vehicle.getYear()<max){
+                yearSortedVehicles.add(vehicle);
+            }
+        }
+        return yearSortedVehicles;
     }
 
     public ArrayList<Vehicle> getVehiclesByColor(String color){
-        ArrayList<Vehicle> vehicles = new ArrayList<>();
-        return vehicles;
+        ArrayList<Vehicle> colorSortedVehicles = new ArrayList<>();
+        for(Vehicle vehicle: this.inventory){
+            if(vehicle.getColor().equalsIgnoreCase(color)){
+                colorSortedVehicles.add(vehicle);
+            }
+        }
+        return colorSortedVehicles;
     }
 
     public ArrayList<Vehicle> getVehiclesByMileage(int min,int max){
-        ArrayList<Vehicle> vehicles = new ArrayList<>();
-        return vehicles;
+        ArrayList<Vehicle> mileAgeSortedVehicles = new ArrayList<>();
+        for(Vehicle vehicle : this.inventory){
+            if(vehicle.getOdometer()>min && vehicle.getOdometer()<max){
+                mileAgeSortedVehicles.add(vehicle);
+            }
+        }
+        return mileAgeSortedVehicles;
     }
 
     public ArrayList<Vehicle> getVehiclesByType(String vehicleType){
-        ArrayList<Vehicle> vehicles = new ArrayList<>();
-        return vehicles;
+        ArrayList<Vehicle> typeSortedVehicles = new ArrayList<>();
+        for(Vehicle vehicle: this.inventory){
+            if(vehicle.getVehicleType().equalsIgnoreCase(vehicleType)){
+                typeSortedVehicles.add(vehicle);
+            }
+        }
+        return typeSortedVehicles;
     }
 
     public ArrayList<Vehicle> getAllVehicles(){
@@ -57,12 +88,22 @@ public class Dealership {
     }
 
     public void removeVehicle(Vehicle vehicle){
-        ArrayList<Vehicle> vehicles = new ArrayList<>();
-        vehicles.remove(vehicle);
+        this.inventory.remove(vehicle);
     }
 
     public ArrayList<Vehicle> getInventory() {
         return inventory;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
 }
