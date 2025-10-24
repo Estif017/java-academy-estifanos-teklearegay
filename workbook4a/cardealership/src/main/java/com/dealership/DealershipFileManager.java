@@ -10,8 +10,7 @@ public class DealershipFileManager {
         ArrayList<Vehicle> vehicles = new ArrayList<>();
         Dealership dealership;
         try{
-            File fileLocation = new File("src/main/resources/inventory.csv");
-            BufferedReader reader = new BufferedReader(new FileReader(fileLocation));
+            BufferedReader reader = new BufferedReader(new FileReader("inventory.csv"));
             String firstLine  = reader.readLine();
             String[] dealerInfo = firstLine.split("\\|");
             String name = dealerInfo[0];
@@ -48,12 +47,12 @@ public class DealershipFileManager {
     }
 
     public static void saveDealership(Dealership dealership){
-        File file = new File("inventory.csv");
         try{
-            BufferedWriter writer = new BufferedWriter(new FileWriter(file,true));
+            BufferedWriter writer = new BufferedWriter(new FileWriter("inventory.csv"));//overwrite mode
             writer.write(dealership.getName() + "|" + dealership.getAddress() + "|" + dealership.getPhone());
             writer.newLine();
 
+            //overwrite mode
             //write each vehicle
             for(Vehicle v:dealership.getInventory()){
                 writer.write(v.getVin() + "|" + v.getYear() + "|" + v.getMake() + "|" +
@@ -61,6 +60,7 @@ public class DealershipFileManager {
                         v.getOdometer() + "|" + v.getPrice());
                 writer.newLine();
             }
+            writer.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

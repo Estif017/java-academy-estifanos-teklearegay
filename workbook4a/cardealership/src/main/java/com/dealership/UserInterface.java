@@ -153,6 +153,7 @@ public class UserInterface {
 
         if(toRemove!=null){
             dealership.removeVehicle(toRemove);
+            DealershipFileManager.saveDealership(dealership);
             System.out.println("🚗 Vehicle removed successfully.");
         }else{
             System.out.println("No vehicle found with VIN " + vin);
