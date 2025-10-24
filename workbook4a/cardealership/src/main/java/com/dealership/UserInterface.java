@@ -67,49 +67,76 @@ public class UserInterface {
             }
         }
     }
+    private int safeIntInput() {
+        while (!scanner.hasNextInt()) {
+            System.out.println("⚠️ Please enter a valid number.");
+            scanner.nextLine();
+            System.out.print("Try again: ");
+        }
+        int value = scanner.nextInt();
+        scanner.nextLine(); // clear buffer
+        return value;
+    }
+
+    private double safeDoubleInput() {
+        while (!scanner.hasNextDouble()) {
+            System.out.println("⚠️ Please enter a valid decimal number.");
+            scanner.nextLine();
+            System.out.print("Try again: ");
+        }
+        double value = scanner.nextDouble();
+        scanner.nextLine();
+        return value;
+    }
+
+    private String capitalize(String input) {
+        if (input == null || input.isBlank()) return "";
+        return input.substring(0, 1).toUpperCase() + input.substring(1).toLowerCase();
+    }
+
     public void processGetByPriceRequest(){
         System.out.println("Enter the minimum amount (press Enter if no minimum amount):");
-        double min = scanner.nextDouble();
+        double min = safeDoubleInput();
 
         System.out.println("Enter the maximum amount (press Enter if no maximum amount):");
-        double max = scanner.nextDouble();
+        double max = safeDoubleInput();
         ArrayList<Vehicle> result = dealership.getVehiclesByPrice(min,max);
         System.out.println(result);
     }
     public void processGetByMakeModelRequest(){
         System.out.println("Enter the make of the car: ");
-        String make = scanner.nextLine();
+        String make = capitalize(scanner.nextLine());
 
         System.out.println("Enter the model of the car");
-        String model = scanner.nextLine();
+        String model = capitalize(scanner.nextLine());
 
         System.out.println(dealership.getVehiclesByMakeModel(make,model));
     }
     public void processGetByColorRequest(){
         System.out.println("Please enter the vehicle color ");
-        String color = scanner.nextLine();
+        String color = capitalize(scanner.nextLine());
 
         System.out.println(dealership.getVehiclesByColor(color));
     }
     public void processGetByYearRequest(){
         System.out.println("Enter the minimum year (press Enter if no minimum year):");
-        int minyear = scanner.nextInt();
+        int minyear = safeIntInput();
 
         System.out.println("Enter the maximum year (press Enter if no maximum year):");
-        int maxyear = scanner.nextInt();
+        int maxyear = safeIntInput();
         System.out.println(dealership.getVehiclesByYear(minyear,maxyear));
     }
     public void processGetByMileageRequest(){
         System.out.println("Enter the minimum mileage (press Enter if no minimum mileage):");
-        int minMileage = scanner.nextInt();
+        int minMileage = safeIntInput();
 
         System.out.println("Enter the maximum mileage (press Enter if no maximum mileage):");
-        int maxMilage = scanner.nextInt();
+        int maxMilage = safeIntInput();
         System.out.println(dealership.getVehiclesByMileage(minMileage,maxMilage));
     }
     public void processGetByVehicleTypeRequest(){
         System.out.println("Please enter the vehicle type");
-        String type = scanner.nextLine();
+        String type = capitalize(scanner.nextLine());
 
         System.out.println(dealership.getVehiclesByType(type));
     }
@@ -119,21 +146,21 @@ public class UserInterface {
     }
     public void processAddVehicleRequest(){
         System.out.println("Enter VIN: ");
-        int vin = scanner.nextInt(); scanner.nextLine();
+        int vin = safeIntInput();
         System.out.println("Enter Year: ");
-        int year = scanner.nextInt(); scanner.nextLine();
+        int year = safeIntInput();
         System.out.println("Enter Make: ");
-        String make = scanner.nextLine();
+        String make = capitalize(scanner.nextLine());
         System.out.println("Enter Model: ");
-        String model = scanner.nextLine();
+        String model = capitalize(scanner.nextLine());
         System.out.println("Enter Type: ");
-        String type = scanner.nextLine();
+        String type = capitalize(scanner.nextLine());
         System.out.println("Enter Color: ");
-        String color = scanner.nextLine();
+        String color = capitalize(scanner.nextLine());
         System.out.println("Enter Odometer: ");
-        int odometer = scanner.nextInt(); scanner.nextLine();
+        int odometer = safeIntInput();
         System.out.println("Enter Price: ");
-        double price = scanner.nextDouble(); scanner.nextLine();
+        double price = safeDoubleInput();
 
         Vehicle newVehicle = new Vehicle(vin,year,make,model,type,color,odometer,price);
         dealership.addVehicle(newVehicle);
