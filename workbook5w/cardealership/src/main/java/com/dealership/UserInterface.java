@@ -1,13 +1,18 @@
 package com.dealership;
 
+import com.helperMethods.HelperMethod;
 import com.vehicle.Vehicle;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static com.helperMethods.HelperMethod.*;
+
+
 public class UserInterface {
-    private Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner = new Scanner(System.in);
     private Dealership dealership;
+
 
 
     public void Display(){
@@ -15,20 +20,9 @@ public class UserInterface {
         boolean running = true;
 
         while (running){
-            System.out.println("\n=== Dealership Menu ===");
-            System.out.println("1 - Find vehicles within a price range");
-            System.out.println("2 - Find vehicles by make / model");
-            System.out.println("3 - Find vehicles by year range");
-            System.out.println("4 - Find vehicles by color");
-            System.out.println("5 - Find vehicles by mileage range");
-            System.out.println("6 - Find vehicles by type (car, truck, SUV, van)");
-            System.out.println("7 - List ALL vehicles");
-            System.out.println("8 - Add a vehicle");
-            System.out.println("9 - Remove a vehicle");
-            System.out.println("99 - Quit");
-            System.out.print("Enter your choice: ");
+            displayMainMenu();
 
-            int choice = scanner.nextInt();
+            int choice =safeIntInput();
             scanner.nextLine();
 
             switch (choice) {
@@ -61,42 +55,23 @@ public class UserInterface {
             System.out.println("No vehicles found.");
             return;
         }else{
-            System.out.println("\n=== Vehicle List ===");
-            for(Vehicle vehicle: vehicles){
-                System.out.println(vehicle.toString());
+            System.out.println("\n╔════════════════════════════════════════════════════════════════════════════════════════════════╗");
+            System.out.printf("║ %-7s │ %-6s │ %-10s │ %-10s │ %-8s │ %-10s │ %-10s │ %-10s ║%n",
+                    "VIN", "Year", "Make", "Model", "Type", "Color", "Mileage", "Price ($)");
+            System.out.println("╠════════════════════════════════════════════════════════════════════════════════════════════════╣");
+            for(Vehicle v: vehicles){
+                System.out.printf("║ %-7d │ %-6d │ %-10s │ %-10s │ %-8s │ %-10s │ %-10d │ %-10.2f ║%n",
+                        v.getVin(), v.getYear(), v.getMake(), v.getModel(),
+                        v.getVehicleType(), v.getColor(), v.getOdometer(), v.getPrice());
             }
+            System.out.println("╚════════════════════════════════════════════════════════════════════════════════════════════════╝");
         }
-    }
-    private int safeIntInput() {
-        while (!scanner.hasNextInt()) {
-            System.out.println("⚠️ Please enter a valid number.");
-            scanner.nextLine();
-            System.out.print("Try again: ");
-        }
-        int value = scanner.nextInt();
-        scanner.nextLine(); // clear buffer
-        return value;
     }
 
-    private double safeDoubleInput() {
-        while (!scanner.hasNextDouble()) {
-            System.out.println("⚠️ Please enter a valid decimal number.");
-            scanner.nextLine();
-            System.out.print("Try again: ");
-        }
-        double value = scanner.nextDouble();
-        scanner.nextLine();
-        return value;
-    }
-
-    private String capitalize(String input) {
-        if (input == null || input.isBlank()) return "";
-        return input.substring(0, 1).toUpperCase() + input.substring(1).toLowerCase();
-    }
 
     public void processGetByPriceRequest(){
         System.out.println("Enter the minimum amount (press Enter if no minimum amount):");
-        double min = safeDoubleInput();
+        double min = HelperMethod.safeDoubleInput();
 
         System.out.println("Enter the maximum amount (press Enter if no maximum amount):");
         double max = safeDoubleInput();
@@ -185,5 +160,24 @@ public class UserInterface {
         }else{
             System.out.println("No vehicle found with VIN " + vin);
         }
+    }
+
+    private void displayMainMenu() {
+        System.out.println("\n╔══════════════════════════════════════════════╗");
+        System.out.println("║         🚗  DEALERSHIP MAIN MENU             ║");
+        System.out.println("╠══════════════════════════════════════════════╣");
+        System.out.println("║ 1. Find Vehicles by Price Range              ║");
+        System.out.println("║ 2. Find Vehicles by Make & Model             ║");
+        System.out.println("║ 3. Find Vehicles by Year Range               ║");
+        System.out.println("║ 4. Find Vehicles by Color                    ║");
+        System.out.println("║ 5. Find Vehicles by Mileage Range            ║");
+        System.out.println("║ 6. Find Vehicles by Type                     ║");
+        System.out.println("║ 7. List All Vehicles                         ║");
+        System.out.println("║ 8. Add a Vehicle                             ║");
+        System.out.println("║ 9. Remove a Vehicle                          ║");
+        System.out.println("║ 10. Sell/Lease Vehicle (Contracts)           ║");
+        System.out.println("║ 99. Quit                                     ║");
+        System.out.println("╚══════════════════════════════════════════════╝");
+        System.out.print("👉 Enter your choice: ");
     }
 }
