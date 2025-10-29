@@ -2,9 +2,11 @@ package com.contract;
 
 import com.dealership.Dealership;
 import com.dealership.DealershipFileManager;
+import com.helperMethods.HelperMethod;
 import com.vehicle.Vehicle;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import static com.helperMethods.HelperMethod.safeIntInput;
@@ -27,8 +29,8 @@ public class ContractUserInterface {
             System.out.println("⚠️ Vehicle not found.");
             return;
         }
-        System.out.print("Enter date (YYYY-MM-DD): ");
-        String date = scanner.nextLine();
+//        System.out.print("Enter date (YYYY-MM-DD): ");
+        String date = HelperMethod.generateRandomDate(2023,2025);
 
         System.out.print("Enter customer name: ");
         String name = scanner.nextLine();
@@ -56,9 +58,36 @@ public class ContractUserInterface {
     public void display() {
         System.out.println("Welcome to the Dealership Contract System!");
         System.out.println("Please choose an option:");
-        System.out.println("1. Sell a Vehicle");
-        System.out.println("2. Lease a Vehicle");
-        startContractProcess();
+        System.out.println("1. Sell/Lease a Vehicle");
+        System.out.println("2. List Contracts");
+        int choice = scanner.nextInt();
+        if(choice==1){
+            startContractProcess();
+        }else{
+            System.out.println("1.All Contracts");
+            System.out.println("2.Lease Contract");
+            System.out.println("3.Sale Contract");
+            int listChoice = scanner.nextInt();
+
+            List<Contract> contracts = ContractFileManager.readContracts();
+            if(listChoice==1){
+                ContractFileManager.displayContracts(contracts);
+            } else if (listChoice==2) {
+                displayContractsByType(contracts,LeaseContract.class);
+            } else if (listChoice==3) {
+                displayContractsByType(contracts,SalesContract.class);
+            }
+        }
+    }
+
+    public void displayContractsByType(List<Contract> contracts, Class<?> contractType){
+        List<Contract> filteredContracts = new ArrayList<>();
+        for (Contract contract : contracts) {
+            if (contractType.isInstance(contract)) {
+                filteredContracts.add(contract);
+            }
+        }
+        ContractFileManager.displayContracts(filteredContracts);
     }
 
 

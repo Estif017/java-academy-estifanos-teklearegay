@@ -6,7 +6,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class DealershipFileManager {
-    public  Dealership getDealership(){
+    public Dealership getDealership(){
         ArrayList<Vehicle> vehicles = new ArrayList<>();
         Dealership dealership;
         try{

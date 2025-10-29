@@ -1,6 +1,7 @@
 package com.dealership;
 
 import com.helperMethods.HelperMethod;
+import com.main.Main;
 import com.vehicle.Vehicle;
 
 import java.util.ArrayList;
@@ -13,8 +14,6 @@ public class UserInterface {
     private final Scanner scanner = new Scanner(System.in);
     private Dealership dealership;
 
-
-
     public void Display(){
         init();
         boolean running = true;
@@ -23,7 +22,7 @@ public class UserInterface {
             displayMainMenu();
 
             int choice =safeIntInput();
-            scanner.nextLine();
+//            scanner.nextLine();
 
             switch (choice) {
                 case 1-> processGetByPriceRequest();
@@ -35,6 +34,7 @@ public class UserInterface {
                 case 7-> processGetAllVehicleRequest();
                 case 8-> processAddVehicleRequest();
                 case 9-> processRemoveVehicleRequest();
+                case 10-> Main.adminMode();
                 case 99->{
                     running = false;
                     System.out.println("Exiting program. Goodbye!");
