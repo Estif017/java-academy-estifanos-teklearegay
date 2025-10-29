@@ -5,6 +5,7 @@ import com.dealership.DealershipFileManager;
 import com.helperMethods.HelperMethod;
 import com.vehicle.Vehicle;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -18,6 +19,7 @@ public class ContractUserInterface {
     private void startContractProcess(){
         System.out.print("Enter VIN of vehicle to sell/lease: ");
         int vin = safeIntInput();
+        scanner.nextLine();
 
         DealershipFileManager dfm = new DealershipFileManager();
         Dealership dealership =dfm.getDealership();
@@ -38,11 +40,19 @@ public class ContractUserInterface {
         System.out.print("Enter customer email: ");
         String email = scanner.nextLine();
 
-        System.out.print("1 = Sale, 2 = Lease: ");
-        int type = safeIntInput();
-        Contract contract = (type==1)
-                ? new SalesContract(date,name,email,selectedVehicle,askIfFinanced())
-                : new LeaseContract(date,name,email,selectedVehicle);
+        int currentYear = LocalDate.now().getYear();
+        int vehicleYear = selectedVehicle.getYear();
+        int age = currentYear - vehicleYear;
+        Contract contract = null;
+        if(age>3){
+            contract = new SalesContract(date,name,email,selectedVehicle,askIfFinanced());
+        }else{
+            System.out.print("1 = Sale, 2 = Lease: ");
+            int type = safeIntInput();
+            contract = (type==1)
+                    ? new SalesContract(date,name,email,selectedVehicle,askIfFinanced())
+                    : new LeaseContract(date,name,email,selectedVehicle);
+        }
 
         ContractFileManager.saveContract(contract);
         dealership.removeVehicle(selectedVehicle);
