@@ -1,6 +1,6 @@
 package com.pluralsight;
 
-public class Pair<T> {
+public class Pair<T /*extends Musician*/> {
     private T leftthing;
     private T rightThing;
 
@@ -13,6 +13,13 @@ public class Pair<T> {
         T temp = leftthing;
         leftthing = rightThing;
         rightThing = temp;
+    }
+
+    public void perform(){
+        // because T Is-A Musician we know that they
+        // will have the perform method
+//        leftthing.perform();
+//        rightThing.perform();
     }
 
     public T getLeftthing() {
