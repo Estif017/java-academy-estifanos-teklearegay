@@ -16,6 +16,8 @@ public class MainApp
     static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args)
     {
+        // this is trying if i can revert my bugs
+
         //adjusting the canvas
         System.out.print("Enter canvas width: ");
         int width = scanner.nextInt();
