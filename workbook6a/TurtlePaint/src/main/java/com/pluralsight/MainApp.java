@@ -84,7 +84,7 @@ public class MainApp
                 shape = new Triangle(turtle,location,color,borderWidth,side);
             }
             case 4->{
-                for (int i = 0; i < 10; i++) {
+                for (int i = 0; i < 5; i++) {
                     int shapeType = random.nextInt(3); // 0=square,1=circle,2=triangle
                     int size = random.nextInt(80) + 20;
 

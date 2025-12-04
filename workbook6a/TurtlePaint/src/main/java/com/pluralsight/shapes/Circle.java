@@ -21,10 +21,12 @@ public class Circle extends Shape{
         turtle.penDown();
 
         // Approximate a circle using 360 tiny lines
-        for (int i = 0; i < 360; i++) {
-            turtle.forward((2 * Math.PI * radius) / 360);
-            turtle.turnRight(1);
+        int steps = 60; // fewer = faster, smoother animation
+        for (int i = 0; i < steps; i++) {
+            turtle.forward((5 * Math.PI * radius) / steps);
+            turtle.turnRight(360.0 / steps);
         }
+
 
         turtle.penUp();
     }
